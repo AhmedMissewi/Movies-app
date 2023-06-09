@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.card-body {
+    background-color: black;
+    border-radius: 20px;
+    height: 450px;
+    border: solid white;
+    /* box-shadow: -7px -9px 35px 14px rgba(48,138,176,0.35);
+    -webkit-box-shadow: -7px -9px 35px 14px rgba(48,138,176,0.35);
+    -moz-box-shadow: -7px -9px 35px 14px rgba(48,138,176,0.35);
+     */
+}
+
+.card-img {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    
+    
+}
+
+.btn {
+    color: red;
+    margin-left: 100px;
+    
+    
+}
+
+
+
+

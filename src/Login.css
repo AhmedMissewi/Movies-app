@@ -1,0 +1,54 @@
+.auth-form-container {
+   background-image: url("https://images.unsplash.com/photo-1604975701397-6365ccbd028a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+   background-size: cover;
+   height: 1000px;
+   background-position: center;
+
+  }
+
+.login-form, .register-form{
+    text-align: center;
+    display: flex;
+    min-height: 60vh;
+    align-items: center;
+    justify-content: center;
+    color: white;
+   
+  }
+  
+
+
+.auth-form-container, .login-form, .register-form {
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+
+input {
+    margin: 5px;
+    padding: 1rem;
+    
+    border-radius: 10px;
+}
+  
+button {
+    border: none;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #7439db;
+}
+  
+.link-btn {
+    background: none;
+    color: white;
+    text-decoration: underline;
+    margin-bottom: 100px;
+  }  
+
+h2 {
+  text-align: center;
+  color: white;
+}  
