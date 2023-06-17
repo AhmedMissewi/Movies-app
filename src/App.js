@@ -1,8 +1,8 @@
 import React, {} from "react";
-import { BrowserRouter, Route,  } from "react-router-dom"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
-import Movies from "./pages/Movies";
+import Movie from "./pages/Movie";
 import Series from "./pages/Series";
 import Trending from "./pages/Trending";
 import Categories from "./pages/CategoriesList/Categories";
@@ -17,20 +17,28 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Loginswitch from "./Loginswitch";
 import Registerswitch from "./Registerswitch";
 import Youtube from "react-youtube";
+import MovieDetails from "./pages/MovieDetails";
+import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoute from "./routes/PublicRoute";
+import Public from "./routes/Public";
+import { login } from "./redux/actions/userActionCreators";
+import { useDispatch } from "react-redux";
+import Login from "./Login";
 
 
 
 
 function App() {
+ 
 
 
 
   return (
     <div>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Navbar/> 
         <Route exact path="/"  component={Home} />
-        <Route path="/movies" component={Movies} />
+        <Route exact path="/movies" component={Movies} />
         <Route path="/series" component={Series} />
         <Route path="/trending" component={Trending} />
         <Route path="/categories" component={Categories} />
@@ -40,14 +48,37 @@ function App() {
         <Route path="/KidsAndFamily" component={KidsAndFamily} />
         <Route path="/Comedies" component={Comedies} />
         <Route path="/Romance" component={Romance} />
-        
+        <Route path="/movies/:id" component={MovieDetails} />
         
         <Route path="/Login" component={Loginswitch} />
         <Route path="/Register" component={Registerswitch} /> 
-      
-           
+      </BrowserRouter> */}
+      {/* <BrowserRouter>
+        <Switch>
+          <PublicRoute restricted={false} component={Public} path="/" exact />
+          <PublicRoute restricted={true} component={Loginswitch} path="/Login" exact />
+          <PrivateRoute component={Navbar} path="../Navbar" exact />
+        </Switch>
+      </BrowserRouter> */}
+
+<BrowserRouter>
+      <div className="App">
+      <Navbar/>
+      <Switch>
+          <PublicRoute exact path="/" component={Loginswitch} />
+          {/* <Navbar/>  */}
+          <PrivateRoute  path='/home' component={Home} /> 
+          <PrivateRoute  path='/movie' component={Movie} /> 
+          <PrivateRoute  path='/series' component={Series} /> 
+          <PrivateRoute path='/trending' component={Trending} /> 
+          <PrivateRoute path="/movies/:id" component={MovieDetails} />
+          {/* <PrivateRoute path="/" component={} /> */}
+      </Switch>
         
-      </BrowserRouter>
+      </div>
+    </BrowserRouter>
+        
+      
       
     </div> 
 

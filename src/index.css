@@ -17,5 +17,14 @@ body {
     
 }
 
+.topbar {
+    height: 67.8px;
+    background-color: var(--tertiary-color);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+  }
+
 
 

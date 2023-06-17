@@ -6,12 +6,13 @@ import { FaTv} from "react-icons/fa";
 import { FaFire} from "react-icons/fa"
 import { FaList} from "react-icons/fa"
 import {FaUserCircle} from "react-icons/fa"
+import { Route } from 'react-router-dom';
 
 
 export default function Navbar() {
   return (
     <>
-    <nav className="navbar bg-black navbar-dark navbar-expand-md  ">
+    <nav className="navbar bg-black navbar-dark navbar-expand-md  "> 
             <div className="container-fluid ">
                 <Link className="navbar-brand " to="/" style={{  }}>Watch ToYou</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,10 +21,10 @@ export default function Navbar() {
                 <div className="collapse navbar-collapse d-flex justify-content-around "  id="navbarNav">
                     <ul className="navbar-nav  nav-underline ">
                         <li className="nav-item ">
-                            <NavLink className="nav-link active " to="/"><FaHome size="20px" color='red' /> <br/> Home</NavLink>
+                            <NavLink className="nav-link active " to="/Home"><FaHome size="20px" color='red' /> <br/> Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink  className="nav-link  cursor-pointer" to="/Movies">  <FaFilm size="20px" color='red' /> <br/>Movies</NavLink>
+                            <NavLink  className="nav-link  cursor-pointer" to="/Movie">  <FaFilm size="20px" color='red' /> <br/>Movie</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/Series"> <FaTv size="20px" color='red' /> <br/> Series</NavLink>
@@ -45,7 +46,7 @@ export default function Navbar() {
                         </ul>
                         </li>  
                         <li className="nav-item d-flex justify-content-end">
-                            <NavLink className="nav-link " to="/Login" style={{marginLeft:"150px"}}> <FaUserCircle size="30px" color='BLUE' /> <br/> Account</NavLink>
+                            <NavLink className="nav-link " to="/Logout" style={{marginLeft:"150px"}}> <FaUserCircle size="30px" color='BLUE' /> <br/> Account</NavLink>
                         </li>
                     </ul>
 

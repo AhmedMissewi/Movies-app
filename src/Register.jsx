@@ -1,6 +1,7 @@
-import React, {useHistory,useState} from 'react'
+import React, {useState} from 'react'
 import "./Login.css"; 
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 
 export const Register = (props) => {
@@ -13,18 +14,18 @@ export const Register = (props) => {
   //     console.log(email);
   //  }
    
-  //  const history = useHistory()
+   const history = useHistory()
     const [registerData, setRegisterData] = useState({
         fullName: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        
     })
     const handleSubmit = async (e) => {
       e.preventDefault();
       // dispatch(login());
       console.log(registerData);
-      const {fullName, email, password, confirmPassword} = registerData
+      const {fullName, email, password,} = registerData
       if (!fullName) {
           return ('fullname is required')
       }
@@ -34,21 +35,16 @@ export const Register = (props) => {
       if (!password) {
           return ('Password is required')
       }
-      if (!confirmPassword) {
-          return ('You have to confirm your password')
-      }
-      if (password !== confirmPassword) {
-          return ('Passwords mismatch')
-      }
+      
       try {
           const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, { fullName, email, password })
           console.log({res});
           if (res.data && res.data.message && res.data.user && res.data.token) {
-             return (res.data.message)
-              // localStorage.setItem('token', res.data.token)
-              // localStorage.setItem('user', JSON.stringify(res.data.user))
+            
+            setRegisterData('token', res.data.token)
+            setRegisterData('user', JSON.stringify(res.data.user))
           }
-          // history.push('/login')
+          history.push('/login')
           // dispatch(login(res.data.user, res.data.token))
       } catch (err) {
           console.log({err});
@@ -64,21 +60,24 @@ export const Register = (props) => {
       setRegisterData(prevItemData => ({...prevItemData, [e.target.name]: e.target.value}))
   }
 
+
   
 
 
   return (
+    
     <div className="auth-form-container">
             <h2>Register</h2>
-        <form className="register-form" onSubmit={handleSubmit}>
+        <form className="register-form" >
             <label htmlFor="name">Full name</label>
             <input value={registerData.fullName}  onChange={handleChange}  type='text' name='fullName' id="name" placeholder="full Name" />
             <label htmlFor="email">email</label>
             <input value={registerData.email} onChange={handleChange}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label htmlFor="password">password</label>
             <input value={registerData.password} onChange={handleChange} type="password" placeholder="********" id="password" name="password" />
-            <button type="submit">Register</button>
+            <button type="submit" onSubmit={handleSubmit}  >Register</button>
         </form>
+       
         <button className="link-btn" onClick={() => props.onFormSwitch ("login") }>Already have an account? Login here.</button>
     </div>
   )
