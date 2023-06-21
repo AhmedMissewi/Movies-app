@@ -5,4 +5,8 @@ import {
 
 export const login = (user, token) => ({ type: LOGIN, payload: { user, token } });
 
-export const logout = () => ({ type: LOGOUT });
+export const logout = () => {
+    localStorage.removeItem("token") 
+    localStorage.removeItem("user") 
+    return ({ type: LOGOUT })
+};

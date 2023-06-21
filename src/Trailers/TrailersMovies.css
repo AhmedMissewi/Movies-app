@@ -1,0 +1,12 @@
+.player {
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 70vh;
+	width: 70%;
+	font-size: 20px;
+	margin-left: 150px;
+	
+}

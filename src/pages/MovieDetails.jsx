@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-
+import TrailersMovies from "../Trailers/TrailersMovies";
+import {AiFillPlayCircle} from "react-icons/ai";
 
 export default function MovieDetails() { 
  
@@ -10,9 +11,16 @@ export default function MovieDetails() {
     console.log({ movieId });
     const [movie, setMovie] = useState(null)
     useEffect(() => {
-        axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=dceb434c5254e155e2b5976630bccbca`)
+        axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIES_API_KEY}`)
             .then(res => setMovie(res.data))
     }, [])
+
+    const [trailer, setTrailer] = useState(true)
+    const [movieTitle, setMovieTitle] = useState("")
+    const MoviesTitle = (movie) => {
+        setMovieTitle(movie.title)
+        setTrailer(!trailer)
+    }
 
     console.log(JSON.stringify(movie));
     return (
@@ -23,11 +31,16 @@ export default function MovieDetails() {
                         <div>
                             <h1>{movie.original_title}</h1>
                             <p>{movie.overview}</p>
-                            <h3>Genres</h3>
+                            {/* <h3>Genres</h3>
                             <ul>
                                 {movie.genres.map(item => <li key={item.id}>{item.name}</li>)}
-                            </ul>
-
+                            </ul> */}
+                           
+                            <div id={trailer ? 'container' : 'NoContainer'}> 
+                            <AiFillPlayCircle color="#fff" fontSize={40} id={trailer ? "playIcon" : "hide"} onClick={() => MoviesTitle(movie)} /> Trailer
+                            {trailer ? console.log : <TrailersMovies moviesTitle={movieTitle} />}
+                            
+                            </div>
                             
                             
                         </div>

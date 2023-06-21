@@ -24,8 +24,8 @@ const MovieBox = ({ titel, poster_path, vote_average, release_date, overview, ba
         <p className='card-text' style={{ fontSize: "15px" }}></p>
 
 
-        <Link to={`/movies/${id}`} >
-          <button type='button' className='btn btn-dark'> View More
+        <Link style={{textDecoration:"none"}} to={`/movies/${id}` } >
+          <button type='button' className='btn btn-dark' style={{display:"block", margin:"auto"}}> View More
           </button>
         </Link>
 

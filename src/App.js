@@ -24,14 +24,20 @@ import Public from "./routes/Public";
 import { login } from "./redux/actions/userActionCreators";
 import { useDispatch } from "react-redux";
 import Login from "./Login";
+import TrailersMovies from "./Trailers/TrailersMovies";
+import Account from "./pages/Account";
 
 
 
 
 function App() {
- 
-
-
+  const dispatch = useDispatch()
+  const token = localStorage.getItem("token")
+  const user = localStorage.getItem("user")
+  if (token && user) {
+    const userObject = JSON.parse(user)
+    dispatch(login(userObject, token))
+  }
 
   return (
     <div>
@@ -63,7 +69,7 @@ function App() {
 
 <BrowserRouter>
       <div className="App">
-      <Navbar/>
+      {/* <Navbar/> */}
       <Switch>
           <PublicRoute exact path="/" component={Loginswitch} />
           {/* <Navbar/>  */}
@@ -72,7 +78,7 @@ function App() {
           <PrivateRoute  path='/series' component={Series} /> 
           <PrivateRoute path='/trending' component={Trending} /> 
           <PrivateRoute path="/movies/:id" component={MovieDetails} />
-          {/* <PrivateRoute path="/" component={} /> */}
+          <PrivateRoute path="/account" component={Account} />
       </Switch>
         
       </div>
